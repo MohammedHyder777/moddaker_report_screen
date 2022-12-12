@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='UTF-8'>
-    <title>الصفحة الرئيسية</title>
+    <title>شاشة التقارير</title>
     <link rel="stylesheet" href='first.css'>
 </head>
 
@@ -19,7 +19,7 @@
 
             $current_user = new User($_SESSION['username']);
 
-            echo " مرحبا بـ".$current_user->name;
+            echo " مرحبا بـ".$current_user->name.' في صفحة التقارير';
             echo "<br>نوع المستخدم: ".$current_user->type;
 
         }

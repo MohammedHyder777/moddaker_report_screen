@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset='TF-8'>
+    <meta charset='UTF-8'>
     <title>تسجيل جديد</title>
     <link rel="stylesheet" href='first.css'>
 </head>
@@ -11,7 +11,7 @@
     <form method="POST" action='signup.php'>
         <ul>
             <label for="username">اسم المستخدم: </label>
-            <li><input class="text" type='text' name='username' id='username' required></li>
+            <li><input class="text" type='text' name='username' id='username' value="<?php echo (isset($_POST['username']))? $_POST['username']:''; ?>" required></li>
             <br>
             <label for="password">الاسم: </label>
             <li><input class="text" type='text' name='name' id='name' required></li>
@@ -43,6 +43,9 @@
     }
 
     //arePOSTparametersset(['username', 'password', 'name']);
+
+
+    
     if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['password'])) :
         $un = $_POST['username'];
         $name = $_POST['name'];

@@ -1,6 +1,7 @@
 <nav>
     <ul>
         <li><a href="home.php">الرئيسة</a></li>
+        <li><a href="reports_screen.php">التقارير</a></li>
         <li><a href="logout.php" style="float:left;">خروج</a></li>
     </ul>
 </nav>

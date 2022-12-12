@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset='TF-8'>
+    <meta charset='UTF-8'>
     <title>تسجيل الدخول</title>
     <link rel="stylesheet" href='first.css'>
 </head>
@@ -11,7 +11,7 @@
     <form method="POST" action='login.php'>
         <ul>
             <label for="username">اسم المستخدم: </label>
-            <li><input class="text" type='text' name='username' id='username' required></li>
+            <li><input class="text" type='text' name='username' id='username' value="<?php echo (isset($_POST['username']))? $_POST['username']:''; ?>" required></li>
             <br>
             <label for="password">كلمة المرور: </label>
             <li><input class="text" type='text' name='password' id='password'></li>
