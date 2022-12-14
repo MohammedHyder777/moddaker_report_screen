@@ -8,6 +8,7 @@
 </head>
 
 <body dir='rtl' class="text">
+    <center>
     <div class="formdiv">
         <form method="POST" action='signup.php'>
             <ul>
@@ -24,6 +25,7 @@
             <input class="text" type="submit" value="تسجيل">
         </form>
     </div>
+    </center>
     <a href="login.php">تسجيل الدخول</a>
 
     <!-- FORM PARAMETERS VALIDATION -->
