@@ -14,7 +14,7 @@
             <li><input class="text" type='text' name='username' id='username' value="<?php echo (isset($_POST['username']))? $_POST['username']:''; ?>" required></li>
             <br>
             <label for="password">كلمة المرور: </label>
-            <li><input class="text" type='text' name='password' id='password'></li>
+            <li><input class="text" type='password' name='password' id='password'><br><input type="checkbox" onclick="toggle()">أظهر</li>
             <br>
         </ul>
         <input class="text" type="submit" value="تسجيل">
@@ -45,5 +45,13 @@
         }
     endif;
     ?>
+
+    <script>
+    // js script to toggle between shown and obscured password on clicking a checkbox.
+        function toggle() {
+            var pwbox = document.getElementById('password');
+            pwbox.type = (pwbox.type == 'password')? 'text' : 'password';
+        }
+    </script>
 </body>
 </html>

@@ -8,21 +8,22 @@
 </head>
 
 <body dir='rtl' class="text">
-    <form method="POST" action='signup.php'>
-        <ul>
-            <label for="username">اسم المستخدم: </label>
-            <li><input class="text" type='text' name='username' id='username' value="<?php echo (isset($_POST['username']))? $_POST['username']:''; ?>" required></li>
-            <br>
-            <label for="password">الاسم: </label>
-            <li><input class="text" type='text' name='name' id='name' required></li>
-            <br>
-            <label for="password">كلمة المرور: </label>
-            <li><input class="text" type='text' name='password' id='password' required></li>
-            <br>
-        </ul>
-        <input class="text" type="submit" value="تسجيل">
-    </form>
-
+    <div class="formdiv">
+        <form method="POST" action='signup.php'>
+            <ul>
+                <label for="username">اسم المستخدم: </label>
+                <li><input class="text" type='text' name='username' id='username' value="<?php echo (isset($_POST['username'])) ? $_POST['username'] : ''; ?>" required></li>
+                <br>
+                <label for="password">الاسم: </label>
+                <li><input class="text" type='text' name='name' id='name' required></li>
+                <br>
+                <label for="password">كلمة المرور: </label>
+                <li><input class="text" type='password' name='password' id='password' required><br><input type="checkbox" onclick="toggle()">أظهر</li>
+                <br>
+            </ul>
+            <input class="text" type="submit" value="تسجيل">
+        </form>
+    </div>
     <a href="login.php">تسجيل الدخول</a>
 
     <!-- FORM PARAMETERS VALIDATION -->
@@ -45,7 +46,7 @@
     //arePOSTparametersset(['username', 'password', 'name']);
 
 
-    
+
     if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['password'])) :
         $un = $_POST['username'];
         $name = $_POST['name'];
@@ -70,6 +71,14 @@
         }
     endif;
     ?>
+
+    <script>
+        // js script to toggle between shown and obscured password on clicking a checkbox.
+        function toggle() {
+            var pwbox = document.getElementById('password');
+            pwbox.type = (pwbox.type == 'password') ? 'text' : 'password';
+        }
+    </script>
 </body>
 
 </html>
