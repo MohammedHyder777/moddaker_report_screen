@@ -7,12 +7,12 @@
     font-weight: 700;
 }
 .formdiv{
-    background-color: darkgoldenrod;
+    background-color: darkgoldenrod; 
     width: 45%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     border-radius: 15px;
-    margin: 10%;
+    margin-right: 32.5%;
     padding-top: 5%;
     padding-bottom: 5%;
 }
@@ -127,3 +127,5 @@ hr {
     background-color: darkseagreen;
     border-style: groove;
 }
+
+/* Chart canvas and div styles */

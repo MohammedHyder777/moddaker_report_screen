@@ -8,9 +8,8 @@
 </head>
 
 <body dir='rtl' class="text">
-    <center>
     <div class="formdiv">
-        <form method="POST" action='signup.php'>
+        <form class="form" method="POST" action='signup.php'>
             <ul>
                 <label for="username">اسم المستخدم: </label>
                 <li><input class="text" type='text' name='username' id='username' value="<?php echo (isset($_POST['username'])) ? $_POST['username'] : ''; ?>" required></li>
@@ -24,9 +23,10 @@
             </ul>
             <input class="text" type="submit" value="تسجيل">
         </form>
+        <br>
+        <a href="login.php">تسجيل الدخول</a>
     </div>
-    </center>
-    <a href="login.php">تسجيل الدخول</a>
+
 
     <!-- FORM PARAMETERS VALIDATION -->
     <?php
