@@ -37,6 +37,7 @@ nav li {
 
 
 nav li a {
+    font-size: 27px;
     display: block;
     color: white;
     text-align: center;
@@ -49,36 +50,25 @@ nav li a:hover:not(.active) {
     background-color: rgb(28, 160, 78);
 }
 
-/* nav ul {
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    gap: 10px;
-  }
-  ul li {
-    list-style-type: none;
-    margin: 0;
-     padding: 0;
-     overflow: hidden;
-
-    }
-    a {
-        text-decoration:  none;
-    } */
-a:active {
-    background-color: #067029;
+a{
+    text-decoration: none;
 }
 
-/* ******************************************************* */
 ul {
     list-style-type: none;
+    padding-inline-start: 0px;  /* To override the default which is = 40px*/
 }
+/********************************************************/
 .messege {
     color: darkslateblue
 }
 
 .error {
-    color: brown;
+    background-color: azure;
+    color: rgb(194, 10, 10);
+    font-size: 25px;
+    border-radius: 30px;
+    margin: 5px;
 }
 
 table {
@@ -105,13 +95,16 @@ td {
 }
 
 input {
-    border: 1px solid rgb(14, 88, 20);
+    border: 3px solid rgb(14, 88, 20);
     border-radius: 30px;
 }
 input[type=submit]{
     background-color: #067029;
     color: azure;
-    padding: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
 th {
@@ -129,3 +122,19 @@ hr {
 }
 
 /* Chart canvas and div styles */
+.chartCard{
+    background-color: whitesmoke;
+    box-shadow: -8px 8px 16px 0 rgba(0, 0, 0, 0.2); /* h-offset v-offset blur spread color */
+    transition: 0.3s;
+    border-radius: 15px;
+    margin: 2%;
+    padding: 5px;
+}
+.chartCard:hover{
+    box-shadow: -16px 16px 16px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chartsPanel{
+    display: flex;
+    flex-direction: row;
+}

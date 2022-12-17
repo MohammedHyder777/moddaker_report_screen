@@ -16,6 +16,8 @@
                 $this -> type = $row['user_type'] == '2'? 'مستخدم عادي' : 'مدير نظام';
                 $this -> username = $row['username'];
             }
+
+            $conn -> close();
         }
     }
 ?>

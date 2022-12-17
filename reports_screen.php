@@ -20,7 +20,7 @@
     if (!isset($_SESSION['username'])) {
         header('location: login.php');
     } else {
-        include 'database.php';
+        include 'dbauth.php';
         include 'user_model.php';
 
         $current_user = new User($_SESSION['username']);
@@ -29,33 +29,65 @@
         echo "<br>نوع المستخدم: " . $current_user->type;
     }
     ?>
-    <div  style="width: 50%; height: 100%">
-        <canvas id="myChart"></canvas>
-    </div>
 
-    <!-- <script type="text/javascript" src="Chart.bundle.min.js"></script> -->
+    <div class="chartsPanel">
+
+        <div class="chartCard" style="width: 50%; height: 100%">
+            <canvas id="myChart"></canvas>
+        </div>
+        <?php if ($current_user->type == 'مدير نظام') : ?>
+            <div class="chartCard" style="width: 50%; height: 100%">
+                <canvas id="myAdminChart"></canvas>
+            </div>
+        <?php endif; ?>
+
+    </div>
+    <script type="text/javascript" src="/moddaker_report_screen/chart.js/Chart.bundle.min.js"></script>
     <script>
         const ctx = document.getElementById('myChart');
 
-        const data = [
-            { year: 2010, count: 10 , color: 'red'},
-            { year: 2011, count: 20 , color: 'blue'},
-            { year: 2012, count: 15 , color: 'brown'},
-            { year: 2013, count: 25 },
-            { year: 2014, count: 22 },
-            { year: 2015, count: 30 },
-            { year: 2016, count: 28 },
+        const data = [{
+                year: 2010,
+                count: 10,
+                color: 'red'
+            },
+            {
+                year: 2011,
+                count: 20,
+                color: 'blue'
+            },
+            {
+                year: 2012,
+                count: 15,
+                color: 'brown'
+            },
+            {
+                year: 2013,
+                count: 25
+            },
+            {
+                year: 2014,
+                count: 22
+            },
+            {
+                year: 2015,
+                count: 30
+            },
+            {
+                year: 2016,
+                count: 28
+            },
         ];
 
         new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: data.map((datum) => datum.year),//['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: data.map((datum) => datum.year), //['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                 datasets: [{
                         label: '# of Votes',
-                        data: data.map((datum) => datum.count),//[1, 19, 3, 5, 2, 3],
-                        backgroundColor: data.map(datum => (datum['color'] !== undefined)? datum.color : 'green'),
-                        borderWidth: 1
+                        data: data.map((datum) => datum.count), //[1, 19, 3, 5, 2, 3],
+                        backgroundColor: data.map(datum => (datum['color'] !== undefined) ? datum.color : 'green'),
+                        borderWidth: 3
                     },
                     // {
                     //     label: '# of occurences',
@@ -65,6 +97,9 @@
                 ]
             },
             options: {
+                animation: {
+                    duration: 2500
+                },
                 scales: {
                     y: {
                         beginAtZero: true
@@ -73,7 +108,7 @@
                 maintainAspectRatio: true,
                 plugins: {
                     legend: {
-                        display: true // default to true
+                        display: false // default to true
                     },
                     tooltip: {
                         enabled: true // default to true
@@ -82,6 +117,26 @@
 
             }
         });
+
+        // Admin charts:
+        var ctx2 = document.getElementById('myAdminChart');
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['sat', 'sun', 'mon', 'tue', 'wed', 'thu'],
+                datasets: [{
+                    label: '# working hours',
+                    data: [4, 7, 3, 9, 4, 5, 5],
+                    backgroundColor: 'darkgoldenrod', //data.map((datum) => (datum > 5)? 'green':'darkgoldenrod')
+                    borderColor: 'green'
+                }]
+            },
+            options: {
+                animation: {
+                    duration: 2500
+                },
+            }
+        })
     </script>
 </body>
 

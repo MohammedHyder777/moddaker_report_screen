@@ -14,14 +14,13 @@
         if (!isset($_SESSION['username'])) {
             header('location: login.php');
         } else {
-            include 'database.php';
+            include 'dbauth.php';
             include 'user_model.php';
 
             $current_user = new User($_SESSION['username']);
 
             echo " مرحبا بـ".$current_user->name;
             echo "<br>نوع المستخدم: ".$current_user->type;
-
         }
     ?>
 </body>

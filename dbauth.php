@@ -49,9 +49,9 @@ class DbAuthService
                 VALUES('$un', '$name', '$dk_password', $type)";
         $result = $this -> conn -> query($stmnt);
         if ($result) {
-            echo '<p class="messege">أضيف المستخدم لقاعدة البيانات</p>';
+            return '<p class="messege">أضيف المستخدم لقاعدة البيانات</p>';
         } else {
-            echo "ثمت خطأ ما";
+            return "ثمت خطأ ما";
         }
     }
     

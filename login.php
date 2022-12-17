@@ -8,30 +8,18 @@
 </head>
 
 <body dir='rtl' class="text">
-    <center>
-        <div class="formdiv">
-            <form method="POST" action='login.php'>
-                <ul>
-                    <label for="username">اسم المستخدم: </label>
-                    <li><input class="text" type='text' name='username' id='username' value="<?php echo (isset($_POST['username'])) ? $_POST['username'] : ''; ?>" required></li>
-                    <br>
-                    <label for="password">كلمة المرور: </label>
-                    <li><input class="text" type='password' name='password' id='password'><br><input type="checkbox" onclick="toggle()">أظهر</li>
-                    <br>
-                </ul>
-                <input class="text" type="submit" value="دخول">
-            </form>
-        </div>
-    </center>
-
-    <a href="signup.php">تسجيل حساب جديد</a>
-
-    <?php
+<?php
+    $error_messeges = ['username' => '', 'password' => ''];
     if (isset($_POST['username'])  && isset($_POST['password'])) :
         $un = $_POST['username'];
         $pw = $_POST['password'];
-        require_once 'database.php';
-        $db = new DbAuthService();
+        require_once 'dbauth.php';
+        try {
+            $db = new DbAuthService();
+        } catch (\Throwable $th) {
+            die('مشكلة في الاتصال بقاعدة البيانات');
+        }
+        
         if ($db->userExists($un)) {
             $dk_pw = $db->getPassword($un);
             // password_verify is a built in function compares the user given plain pw with the hashed pw stored in the db.
@@ -41,14 +29,32 @@
                 $_SESSION['username'] = $un;
                 header('location: home.php');
             } else {
-                echo '<p class="error">كلمة مرور خاطئة</p>';
+                $error_messeges['password'] = '<p class="error">كلمة مرور خاطئة</p>';
             }
         } else {
-            echo '<p class="error">اسم مستخدم غير مسجل امش سجّل</p>';
+            $error_messeges['username'] = '<p class="error">اسم مستخدم غير مسجل امش سجّل</p>';
         }
     endif;
     ?>
 
+        <div class="formdiv">
+            <form method="POST" action='login.php'>
+                <ul>
+                    <label for="username">اسم المستخدم: </label>
+                    <li><input class="text" type='text' name='username' id='username' value="<?php echo (isset($_POST['username'])) ? $_POST['username'] : ''; ?>" required></li>
+                    <div><?php echo $error_messeges['username'] ?></div>
+                    <br>
+                    <label for="password">كلمة المرور: </label>
+                    <li><input class="text" type='password' name='password' id='password' required><br><input type="checkbox" onclick="toggle()">أظهر</li>
+                    <div><?php echo $error_messeges['password'] ?></div>
+                    <br>
+                </ul>
+                <input class="text" type="submit" value="دخول">
+            </form>
+            <a href="signup.php">تسجيل حساب جديد</a>
+        </div>
+
+    
     <script>
         // js script to toggle between shown and obscured password on clicking a checkbox.
         function toggle() {
