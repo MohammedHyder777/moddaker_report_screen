@@ -30,11 +30,11 @@
     }
     ?>
 
-    <div class="chartsPanel">
-
+<div class="chartsPanel">
         <div class="chartCard" style="width: 50%; height: 100%">
             <canvas id="myChart"></canvas>
         </div>
+
         <?php if ($current_user->type == 'مدير نظام') : ?>
             <div class="chartCard" style="width: 50%; height: 100%">
                 <canvas id="myAdminChart"></canvas>
@@ -43,6 +43,7 @@
 
     </div>
     <script type="text/javascript" src="/moddaker_report_screen/chart.js/Chart.bundle.min.js"></script>
+    
     <script>
         const ctx = document.getElementById('myChart');
 
@@ -105,6 +106,7 @@
                         beginAtZero: true
                     }
                 },
+                animation: false,
                 maintainAspectRatio: true,
                 plugins: {
                     legend: {
@@ -112,6 +114,12 @@
                     },
                     tooltip: {
                         enabled: true // default to true
+                    },
+                    datalabels: {
+                        display: true,
+                        formatter: (value) => {
+                            return value;
+                        },
                     }
                 },
 
