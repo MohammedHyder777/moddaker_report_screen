@@ -148,4 +148,13 @@ div[id^="chartdiv"] {
     height: 300px;
     font-family: 'arabic typesetting';
     font-size: large;
-  }
+}
+
+#chartCard3{
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+/* <div role="tooltip" style="position: absolute; top: -1e+06px; opacity: 1e-07; pointer-events: none;">مصر: 33.33%</div> */
