@@ -6,7 +6,7 @@
     <meta content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href='first.css'>
-    <title>إدارة المستخدمين</title>
+    <title>إدارة المستخدمين 2</title>
 </head>
 
 <body dir='rtl' class="text">
@@ -24,9 +24,25 @@
     if ($current_user->type != 'مدير نظام') {
         header('location: home.php');
     }
-    $conn = new mysqli('localhost', 'root', '', 'temp');
-    $result = $conn->query('SELECT * FROM users')->fetch_all(MYSQLI_ASSOC);
-    $conn -> close();
+    
+    $url = 'http://localhost/moodle/mapi/api.php';
+
+    $curl = curl_init($url);
+    curl_setopt_array($curl, [
+        // CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_RETURNTRANSFER => true
+        ]); // If this option (CURLOPT_RETURNTRANSFER) is not set to true the response will not be decoded to an array using json_decode;
+    $response = curl_exec($curl);
+	curl_close($curl);
+    $response = "$response";
+
+    // $response = file_get_contents($url);
+	$result = json_decode($response, true);
+
+    echo "<div dir = 'ltr'>";
+    print_r($result);
+    echo "</div>";
+    echo sizeof($result);
     ?>
     <table>
         <tr>
