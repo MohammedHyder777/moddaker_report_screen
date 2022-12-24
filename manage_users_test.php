@@ -26,7 +26,9 @@
     }
     
     $url = 'http://localhost/moodle/mapi/api.php';
+    // SELECT country, count(country) as count FROM `mdl_` GROUP BY country;
 
+    
     $curl = curl_init($url);
     curl_setopt_array($curl, [
         // CURLOPT_FOLLOWLOCATION => true,
@@ -59,7 +61,7 @@
                 <td><?php echo $row['email']?></td>
                 <td><?php echo $row['auth']?></td>
                 <td><a href="#">عدّل بياناته</a></td>
-                <td><a href="<?php echo "delete_user.php?username=$row[username]"; ?>">حذف</a></td>
+                <td><a class="error" href="<?php echo "delete_user.php?username=$row[username]"; ?>">حذف</a></td>
             </tr>
         <?php } ?>
     </table>

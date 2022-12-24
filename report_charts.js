@@ -80,55 +80,58 @@ data = [{
 myseries.data.setAll(data);
 
 // Admin dedicated charts: //////////////////////////////////////////////////////////////////////
-var root2 = am5.Root.new("chartdiv2");
-var chart2 = root2.container.children.push(
-    am5percent.PieChart.new(root2, {
-        layout: root2.verticalLayout,
-        innerRadius: am5.percent(60)
-    })
-);
-
-// Adding series. Pie chart supports one series type: PieSeries
-var myseries2 = chart2.series.push(
-    am5percent.PieSeries.new(root2, {
-        name: "Series",
-        categoryField: "country",
-        valueField: "students",
-    })
-);
-
-root2.setThemes([
-    am5themes_Animated.new(root2)
-]);
-
-// Coloring one by one:
-// myseries2.slices.template.adapters.add("fill", function(fill, target) {
-//     switch (myseries2.slices.indexOf(target)) {
-//         case 0:
-//             return 'darkgoldenrod';
-//             break;
-//         case 1:
-//             return 'green';
-//             break;
-//         default:
-//             return 'blue';
-//             break;
-//     }
-//   });
-
-myseries2.animate({
-    key: "startAngle",
-    from: 270,
-    to: 630,
-    loops: 1,
-    duration: 2000,
-    easing: am5.ease.inOut(am5.ease.cubic) // linear (Constant speed during all duration) - circle - cubic elastic - ...
-});
-// myseries2.slices.template.setAll({tooltipText: ""})
-myseries2.slices.template.adapters.add("stroke", () => 'whitesmoke'); //same as chartCard background
-myseries2.slices.template.adapters.add("strokeWidth", () => 5);
-myseries2.data.setAll(data);
-
+if (document.body.contains(document.getElementById("chartdiv2"))) {
+    // check if admin div exists, to avoid errors for nonadmin sessions
+	var root2 = am5.Root.new("chartdiv2");
+	var chart2 = root2.container.children.push(
+	    am5percent.PieChart.new(root2, {
+	        layout: root2.verticalLayout,
+	        innerRadius: am5.percent(60)
+	    })
+	);
+	
+	// Adding series. Pie chart supports one series type: PieSeries
+	var myseries2 = chart2.series.push(
+	    am5percent.PieSeries.new(root2, {
+	        name: "Series",
+	        categoryField: "country",
+	        valueField: "students",
+	    })
+	);
+	
+	root2.setThemes([
+	    am5themes_Animated.new(root2)
+	]);
+	
+	// Coloring one by one:
+	// myseries2.slices.template.adapters.add("fill", function(fill, target) {
+	//     switch (myseries2.slices.indexOf(target)) {
+	//         case 0:
+	//             return 'darkgoldenrod';
+	//             break;
+	//         case 1:
+	//             return 'green';
+	//             break;
+	//         default:
+	//             return 'blue';
+	//             break;
+	//     }
+	//   });
+	
+	myseries2.animate({
+	    key: "startAngle",
+	    from: 270,
+	    to: 630,
+	    loops: 1,
+	    duration: 2000,
+	    easing: am5.ease.inOut(am5.ease.cubic) // linear (Constant speed during all duration) - circle - cubic elastic - ...
+	});
+	// myseries2.slices.template.setAll({tooltipText: ""})
+	myseries2.slices.template.adapters.add("stroke", () => 'whitesmoke'); //same as chartCard background
+	myseries2.slices.template.adapters.add("strokeWidth", () => 5);
+	myseries2.data.setAll(data);
+	
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var root3 = am5.Root.new("chartdiv3");
 var chart3 = root3.container.children.push(
