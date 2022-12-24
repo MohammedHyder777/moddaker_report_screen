@@ -39,25 +39,27 @@
     // $response = file_get_contents($url);
 	$result = json_decode($response, true);
 
-    echo "<div dir = 'ltr'>";
-    print_r($result);
-    echo "</div>";
-    echo sizeof($result);
+    // echo "<div dir = 'ltr'>";
+    // print_r($result);
+    // echo "</div>";
+    // echo sizeof($result);
     ?>
     <table>
         <tr>
             <th>اسم المستخدم</th>
             <th>الاسم</th>
-            <th>رتبة المستخدم</th>
-            <th colspan="2">العمليات</th>
+            <th>البريد الإلكتروني</th>
+            <th>نوع التسجيل</th>
+            <th colspan="2">عمليات</th>
         </tr>
         <?php foreach ($result as $row) { ?>
             <tr>
                 <td><?php echo $row['username']?></td>
-                <td><?php echo $row['name']?></td>
-                <td><?php echo $row['user_type']?></td>
+                <td><?php echo $row['firstname'].' '.$row['lastname']?></td>
+                <td><?php echo $row['email']?></td>
+                <td><?php echo $row['auth']?></td>
                 <td><a href="#">عدّل بياناته</a></td>
-                <td><a class = "error" href="<?php echo "delete_user.php?username=$row[username]"; ?>">حذف</a></td>
+                <td><a href="<?php echo "delete_user.php?username=$row[username]"; ?>">حذف</a></td>
             </tr>
         <?php } ?>
     </table>
