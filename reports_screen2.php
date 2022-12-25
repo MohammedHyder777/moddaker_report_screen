@@ -18,11 +18,35 @@
     } else {
         include 'dbauth.php';
         include 'user_model.php';
+        include 'countries.php';
 
         $current_user = new User($_SESSION['username']);
 
         echo " مرحبا بـ" . $current_user->name . ' في صفحة التقارير 2';
-        echo "<br>نوع المستخدم: " . $current_user->type;
+        echo "<br>نوع المستخدم: " . $current_user->type . '<br>';
+
+        $url = 'http://localhost/moodle/mapi/api.php';
+
+        $curl = curl_init($url);
+        curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $result = json_decode($response, true);
+
+        for ($i=0; $i < count($result); $i++) { 
+            $row = $result[$i];
+            $result[$i]['country'] = $string["$row[country]"];
+            if ($result[$i]['country'] == '') {
+                unset($result[$i]);
+            }
+        }
+        // $i = 0;
+        // foreach ($result as $row) {
+        //     $row['country'] = $string["$row[country]"];
+        //     $result[$i] = $row;
+        //     $i++;
+        // }
+        print_r($result);
     }
     ?>
     <div class="chartsPanel">
@@ -50,12 +74,7 @@
 
     <script src="report_charts.js"></script>
 
-    <script src="/jquery/jquery-3.6.1.min.js"></script>
-    <script>
-        $(document).ready(
-            $('div.am5-tooltip-container').empty()
-        )
-    </script>
+    <!-- <script src="/jquery/jquery-3.6.1.min.js"></script> -->
 </body>
 
 </html>

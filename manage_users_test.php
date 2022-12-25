@@ -52,6 +52,7 @@
             <th>الاسم</th>
             <th>البريد الإلكتروني</th>
             <th>نوع التسجيل</th>
+            <th>وقت التسجيل</th>
             <th colspan="2">عمليات</th>
         </tr>
         <?php foreach ($result as $row) { ?>
@@ -60,6 +61,7 @@
                 <td><?php echo $row['firstname'].' '.$row['lastname']?></td>
                 <td><?php echo $row['email']?></td>
                 <td><?php echo $row['auth']?></td>
+                <td><?php echo date('Y-m-d H:i a',$row['timecreated']) ?></td>
                 <td><a href="#">عدّل بياناته</a></td>
                 <td><a class="error" href="<?php echo "delete_user.php?username=$row[username]"; ?>">حذف</a></td>
             </tr>
