@@ -28,8 +28,9 @@
         $url = 'http://localhost/moodle/mapi/api.php';
 
         $curl = curl_init($url);
-        curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($curl);
+        
         curl_close($curl);
         $result = json_decode($response, true);
 
@@ -46,9 +47,12 @@
         //     $result[$i] = $row;
         //     $i++;
         // }
+        echo '<div dir="ltr">';
         print_r($result);
+        echo '</div>';
     }
     ?>
+    
     <div class="chartsPanel">
         <div class="chartCard" id="chartdiv" style="width: 50%;"></div>
 
@@ -72,6 +76,39 @@
     <script type="text/javascript" src="/moddaker_report_screen/amcharts5/xy.js"></script>
     <script type="text/javascript" src="/moddaker_report_screen/amcharts5/themes/Animated.js"></script>
 
+    <script>
+        // Reading data from php:
+        var result = <?php echo json_encode($result);?>;
+        // var data = JSON.parse(result);
+        var data = [];
+        for (const key in result) {
+            if (result.hasOwnProperty.call(result, key)) {
+                data.push(result[key]);
+                
+            }
+        }
+        console.log(result)
+        console.log(data)
+
+
+
+
+        // محاولة غير ناجحة
+        // var data = [];
+        // async function getData(url) {
+        //     let response = await fetch(url);
+        //     console.log(response.json())
+        //     return response.json();  // 
+        // }
+
+        
+        // getData('http://localhost/moodle/mapi/api.php').then(
+        //     (response) => {
+        //         data = response;
+        //     }
+        // );
+        // console.log(data)
+    </script>
     <script src="report_charts.js"></script>
 
     <!-- <script src="/jquery/jquery-3.6.1.min.js"></script> -->

@@ -14,7 +14,7 @@ var myseries = chart.series.push(
     am5percent.PieSeries.new(root, {
         name: "Series",
         categoryField: "country",
-        valueField: "students",
+        valueField: "count",
     })
 );
 
@@ -63,19 +63,20 @@ myseries.slices.template.adapters.add("fill", function(fill, target) {
 myseries.slices.template.adapters.add("stroke", () => 'aliceblue');
 
 // The data is set directly on series via its data property:
-data = [{
-    country: "السودان",
-    students: 3000
-}, {
-    country: "السعودية",
-    students: 2000
-}, {
-    country: "مصر",
-    students: 3000
-},{
-    country: "إِندونيسيا",
-    students: 1000
-}]
+// data = [{
+//     country: "السودان",
+//     students: 3000
+// }, {
+//     country: "السعودية",
+//     students: 2000
+// }, {
+//     country: "مصر",
+//     students: 3000
+// },{
+//     country: "إِندونيسيا",
+//     students: 1000
+// }]
+
 
 myseries.data.setAll(data);
 
@@ -95,7 +96,7 @@ if (document.body.contains(document.getElementById("chartdiv2"))) {
 	    am5percent.PieSeries.new(root2, {
 	        name: "Series",
 	        categoryField: "country",
-	        valueField: "students",
+	        valueField: "count",
 	    })
 	);
 	
@@ -175,7 +176,7 @@ var myseries3 = chart3.series.push(am5xy.ColumnSeries.new(root3,{
     xAxis: xaxis,
     yAxis: yaxis,
     categoryXField: "country",
-    valueYField: "students",
+    valueYField: "count",
 }));
 
 // Column SIZE and border radius:
