@@ -34,12 +34,10 @@
         curl_close($curl);
         $result = json_decode($response, true);
 
+        
         for ($i=0; $i < count($result); $i++) { 
             $row = $result[$i];
             $result[$i]['country'] = $string["$row[country]"];
-            if ($result[$i]['country'] == '') {
-                unset($result[$i]);
-            }
         }
         // $i = 0;
         // foreach ($result as $row) {
@@ -77,38 +75,38 @@
     <script type="text/javascript" src="/moddaker_report_screen/amcharts5/themes/Animated.js"></script>
 
     <script>
-        // Reading data from php:
+        // Reading country_data from php:
         var result = <?php echo json_encode($result);?>;
-        // var data = JSON.parse(result);
-        var data = [];
+        // // var country_data = JSON.parse(result);
+        var country_data = [];
         for (const key in result) {
             if (result.hasOwnProperty.call(result, key)) {
-                data.push(result[key]);
-                
+                country_data.push(result[key]);
             }
         }
         console.log(result)
-        console.log(data)
-
-
-
-
-        // محاولة غير ناجحة
-        // var data = [];
-        // async function getData(url) {
-        //     let response = await fetch(url);
-        //     console.log(response.json())
-        //     return response.json();  // 
-        // }
-
+        console.log(country_data)
         
-        // getData('http://localhost/moodle/mapi/api.php').then(
-        //     (response) => {
-        //         data = response;
-        //     }
-        // );
-        // console.log(data)
-    </script>
+        
+        
+        
+        // محاولة غير ناجحة
+        // var country_data = [];
+        // async function getcountry_data(url) {
+            //     let response = await fetch(url);
+            //     console.log(response.json())
+            //     return response.json();  // 
+            // }
+            
+            
+            // getcountry_data('http://localhost/moodle/mapi/api.php').then(
+                //     (response) => {
+                    //         country_data = response;
+                    //     }
+                    // );
+                    // console.log(country_data)
+                    </script>
+    
     <script src="report_charts.js"></script>
 
     <!-- <script src="/jquery/jquery-3.6.1.min.js"></script> -->

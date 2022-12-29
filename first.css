@@ -128,7 +128,8 @@ hr {
     transition: 0.3s;
     border-radius: 15px;
     margin: 2%;
-    padding: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .chartCard:hover{
     box-shadow: -16px 16px 16px 8px rgba(0, 0, 0, 0.2);
