@@ -54,22 +54,18 @@ There is a number of ways to override the list as needed.
 The most easiest way is to simply set its colors setting to an array of Color objects as done below. Another option is to modify default theme.
 */
 // myseries.set("fill", am5.color('#ff0000'));
-chart.set("colors", [
-    am5.color(0x239923),
-    am5.color(0x239923),
-    am5.color(0x239923),
-    am5.color(0x239923),
-    am5.color(0x239923)
-]);
-myseries.slices.template.adapters.add("fill", function(fill, target) {
-    var factor = Math.ceil(Math.max(country_data.length,10) / (myseries.slices.indexOf(target)+1));
-    var gdegree = factor % 16;
-    var gdegree = gdegree.toString(16);
-    // console.log(`#5${gdegree}5`);
-    return `#7${gdegree}7`;//chart.get("colors").getIndex(myseries.slices.indexOf(target));
-    // when g > r colors tends to blue and its derivatives and vice versa.
-    // blue, seablue, violete ... / red, brown, orange ...
-  });
+
+// myseries.slices.template.adapters.add("fill", function(fill, target) {
+//     var factor = Math.ceil(Math.max(country_data.length,10) / (myseries.slices.indexOf(target)+1));
+//     var gdegree = factor % 16;
+//     var half_degree = Math.ceil(gdegree/2);
+//     var gdegree = gdegree.toString(16);
+//     var half_degree = half_degree.toString(16);
+//     // console.log(`#5${gdegree}5`);
+//     return `#a${gdegree}${half_degree}`;//chart.get("colors").getIndex(myseries.slices.indexOf(target));
+//     // when g > r colors tends to blue and its derivatives and vice versa.
+//     // blue, seablue, violete ... / red, brown, orange ...
+//   });
 myseries.slices.template.adapters.add("stroke", () => 'aliceblue');
 
 // The data is set directly on series via its data property:
@@ -91,15 +87,15 @@ dummydata = [{
 myseries.data.setAll(country_data);
 
 // Legend:
-var legend = chart.children.push(am5.Legend.new(root, {
-	centerY: am5.percent(50),
-	y: am5.percent(50),
-	// marginTop: 15,
-	// marginBottom: 15,
-	layout: root.horizontalLayout
-}));
+// var legend = chart.children.push(am5.Legend.new(root, {
+// 	centerY: am5.percent(100),
+// 	y: am5.percent(100),
+// 	// marginTop: 15,
+// 	// marginBottom: 15,
+// 	layout: root.verticalLayout
+// }));
 
-legend.data.setAll(myseries.dataItems);
+// legend.data.setAll(myseries.dataItems);
 
 // Admin dedicated charts: //////////////////////////////////////////////////////////////////////
 if (document.body.contains(document.getElementById("chartdiv2"))) {

@@ -45,9 +45,9 @@
         //     $result[$i] = $row;
         //     $i++;
         // }
-        echo '<div dir="ltr">';
-        print_r($result);
-        echo '</div>';
+        // echo '<div dir="ltr">';
+        // print_r($result);
+        // echo '</div>';
     }
     ?>
     
