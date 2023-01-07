@@ -25,7 +25,7 @@
         echo " مرحبا بـ" . $current_user->name . ' في صفحة التقارير 2';
         echo "<br>نوع المستخدم: " . $current_user->type . '<br>';
 
-        $url = 'http://localhost/moodle/mapi/api.php';
+        $url = 'http://localhost/moodle/mapi/api.php?function=country';
         $countryurl = "https://moddaker.com/birmingham/webservice/rest/server.php?wstoken=6205b87bf70f63264e85e23200a67b88&wsfunction=core_user_get_users&moodlewsrestformat=json&criteria[0][key]=lastname&criteria[0][value]=%25";
 
         $curl = curl_init($url);
@@ -34,7 +34,6 @@
         
         curl_close($curl);
         $result = json_decode($response, true);
-
         
         for ($i=0; $i < count($result); $i++) { 
             $row = $result[$i];
