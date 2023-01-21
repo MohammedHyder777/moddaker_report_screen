@@ -55,6 +55,7 @@
         <div class="chartCard" id="chartdiv" style="width: 50%;"></div>
 
         <?php if ($current_user->type == 'مدير نظام') : ?>
+            <a href="#" onclick="toggleFullscreen('chartdiv2')">O</a>
             <div class="chartCard" id="chartdiv2" style="width: 50%;"></div>
         <?php endif; ?>
     </div>
@@ -109,7 +110,33 @@
     
     <script src="report_charts.js"></script>
 
-    <!-- <script src="/jquery/jquery-3.6.1.min.js"></script> -->
+    <script src="/jquery/jquery-3.6.1.min.js"></script>
+
+    <script>
+    $(document).ready(
+        $('.chartCard').each(function () {
+            setFont(this);
+        })
+    )
+
+    function setFont(mychart) {
+            descendants = [...mychart.getElementsByTagName('*')];
+            // console.log(typeof descendants);
+
+            descendants.forEach(element => {
+                if (element.hasChildNodes()) {
+                    setFont(element)
+                } else {
+                    element.style.fontFamily = 'arabic typesetting'
+                    element.style.fontSize = 'small'
+                    element.style.overflow = 'auto'
+                    element.style.margin = 'auto'
+                    // element.style.backgroundColor = 'red'
+                }
+            });
+        }
+    
+</script>
 </body>
 
 </html>
